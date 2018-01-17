@@ -1,0 +1,5 @@
+git+https://github.com/seasidesparrow/ADSPipelineUtils.git@master
+jsonschema
+namedentities
+python-dateutil
+celery==4.1.0
