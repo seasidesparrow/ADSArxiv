@@ -1,2 +1,2 @@
 # fire incremental updates (3am EST)
-24 18 * * 1-5 bash -l -c 'cd /app && python run.py -p'
+3,13,23,33,43,53 * * * 0-6 bash -l -c 'cd /app && python run.py'

@@ -33,4 +33,4 @@ RUN pip install -r requirements.txt
 ADD crontab /app/crontab
 RUN crontab /app/crontab
 
-CMD ["/sbin/my_init","/app/run.py -d"]
+CMD ["/sbin/my_init"]

@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
-import config.config as cfg
+import config as cfg
+from config import *
 import gzip
 import os
 import sys
@@ -66,7 +67,7 @@ def main():
 
     elif args.caldate:
         file_pattern=args.caldate
-        glob_pattern=cfg.UPDATE_AGENT_DIR+'/UpdateAgent.out.'+file_pattern+'*.gz'
+        glob_pattern=UPDATE_AGENT_DIR+'/UpdateAgent.out.'+file_pattern+'*.gz'
         try:
             infile=glob(glob_pattern)[0]
         except IndexError:
@@ -75,7 +76,7 @@ def main():
             args.reclist = '@'+infile
 
     else:
-        glob_pattern=cfg.UPDATE_AGENT_DIR+'/UpdateAgent.out.*'
+        glob_pattern=UPDATE_AGENT_DIR+'/UpdateAgent.out.*'
         files = glob(glob_pattern)
         files.sort(key=os.path.getmtime)
         args.reclist = '@'+files[-1]
@@ -89,7 +90,7 @@ def main():
             if '.gz' in infile:
                 fp = gzip.open(infile, 'r')
                 for l in fp.readlines():
-                    reclist.append(cfg.INCOMING_ABS_DIR+'/'+l.split()[0])
+                    reclist.append(INCOMING_ABS_DIR+'/'+l.split()[0])
                 fp.close()
             else:
                 with open(infile, 'rU') as fp:
@@ -98,8 +99,7 @@ def main():
             if args.diag:
                 reclist = map(lambda x: x.replace('.','/'), reclist)
             else:
-                reclist = map(lambda x: cfg.ARCHIVE_ABS_DIR + '/' + x.replace('.','/'), reclist)
-            print (reclist)
+                reclist = map(lambda x: ARCHIVE_ABS_DIR + '/' + x.replace('.','/'), reclist)
     elif args.absdir:
         reclist = glob(args.absdir+'/*')
 

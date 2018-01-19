@@ -40,14 +40,14 @@ class ArxivParser(DublinCoreParser):
             pass
 
         else:
-            print("---------------------")
-            print(r)
+#           print("---------------------")
+#           print(r)
             try:
                 if(len(r.keys()) == 0):
                     raise EmptyParserException("No dictionary.")
 
                 try:
-                    print(r['dc:date'][-1])
+#                   print(r['dc:date'][-1])
                     arx['pubdate']  = r['dc:date'][-1]
                 except KeyError:
                     raise MissingDateException("Invalid record: no pubdate")
@@ -58,7 +58,7 @@ class ArxivParser(DublinCoreParser):
 #                       arx['pubhist'] = None
 
                 try:
-                    print(r['dc:description'][0])
+#                   print(r['dc:description'][0])
                     arx['abstract'] = r['dc:description'][0]
                 except KeyError:
                     raise MissingAbstractException("Invalid record: no abstract")
@@ -67,7 +67,7 @@ class ArxivParser(DublinCoreParser):
 #                   arx['comments'] = " ".join(r['dc:description'][1:])
 
                 try:
-                    print(r['dc:title'])
+#                   print(r['dc:title'])
                     arx['title']    = [r['dc:title'][-1]]
                 except KeyError:
                     raise MissingTitleException("Invalid record: no title")
@@ -75,7 +75,7 @@ class ArxivParser(DublinCoreParser):
                     pass
 
                 try:
-                    print (r['dc:creator'])
+#                   print (r['dc:creator'])
                     arx['author']  = r['dc:creator']
                 except KeyError:
                     raise MissingAuthorException("Invalid record: no author(s)")
@@ -83,7 +83,7 @@ class ArxivParser(DublinCoreParser):
                     pass
 
                 try:
-                    print (r['dc:subject'])
+#                   print (r['dc:subject'])
                     arx['keyword'] = r['dc:subject']
                 except KeyError:
                     raise MissingAbstractException("Invalid record: no subjects")
@@ -91,7 +91,7 @@ class ArxivParser(DublinCoreParser):
                     pass
 
                 try:
-                    print (r['dc:identifier'])
+#                   print (r['dc:identifier'])
                     make_extras(r['dc:identifier'])
                 except KeyError:
                     raise MissingIDException("Invalid record: no identifier")
@@ -101,7 +101,7 @@ class ArxivParser(DublinCoreParser):
                         arx['doi'] = testdoi
 
                 try:
-                    print (url,arx['author'])
+#                   print (url,arx['author'])
                     arx['bibcode'] = make_bibcode(url,arx['author'])
                 except KeyError:
                     raise MissingBibcodeException("Invalid record: cant generate bibcode")
@@ -110,7 +110,7 @@ class ArxivParser(DublinCoreParser):
 
             except:
                 print "Malformed record, skipping."
-            print("---------------------")
+#           print("---------------------")
 
         return arx
 
