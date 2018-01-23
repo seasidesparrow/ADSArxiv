@@ -1,13 +1,12 @@
 #!/usr/bin/env python
 
-import config as cfg
 from config import *
 import gzip
 import os
 import sys
 from glob import glob
-from parsers.arxiv import ArxivParser
-from serializers.serializer_mp import ArxivToMasterPipeline
+from pyingest.parsers.arxiv import ArxivParser
+from serializer_mp import ArxivToMasterPipeline
 
 def get_arguments():
 
@@ -63,7 +62,7 @@ def main():
         pass
 
     elif args.diag:
-        args.reclist = 'config/1111.0262'
+        args.reclist = 'tests/1111/0262'
 
     elif args.caldate:
         file_pattern=args.caldate
