@@ -1,3 +1,4 @@
 git+https://github.com/adsabs/ADSPipelineUtils.git@master
 git+https://github.com/seasidesparrow/adsabs-pyingest.git@master
 celery==4.1.0
+xmltodict

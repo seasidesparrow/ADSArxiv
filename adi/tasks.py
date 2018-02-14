@@ -1,14 +1,14 @@
 from __future__ import absolute_import, unicode_literals
-import app as app_module
+import adi.app as app_module
 from adsputils import get_date, exceptions
 from kombu import Queue
 import os
-from adsmsg import BibRecord
+from adsmsg import DenormalizedRecord
 
 # ============================= INITIALIZATION ==================================== #
 
 proj_home = os.path.realpath(os.path.join(os.path.dirname(__file__), './'))
-app = app_module.AdsArxivCelery('arxiv_di', proj_home=proj_home)
+app = app_module.AdsArxivCelery('arxiv_pipeline', proj_home=proj_home)
 logger = app.logger
 
 
