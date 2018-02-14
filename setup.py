@@ -1,8 +1,8 @@
 from setuptools import setup
 
 setup(
-    name = "aip",
+    name = "adi",
     version = "0.1",
     author = "Matthew Templeton",
-    packages = ["aip"]
+    packages = ["adi"]
 )
