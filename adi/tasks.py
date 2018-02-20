@@ -7,7 +7,7 @@ from adsmsg import DenormalizedRecord
 
 # ============================= INITIALIZATION ==================================== #
 
-proj_home = os.path.realpath(os.path.join(os.path.dirname(__file__), './'))
+proj_home = os.path.realpath(os.path.join(os.path.dirname(__file__), '../'))
 app = app_module.AdsArxivCelery('arxiv_pipeline', proj_home=proj_home)
 logger = app.logger
 
