@@ -62,7 +62,7 @@ def main():
         pass
 
     elif args.diag:
-        args.reclist = 'tests/1111/0262'
+        args.reclist = 'test_data/1111/0262'
 
     elif args.caldate:
         file_pattern=args.caldate

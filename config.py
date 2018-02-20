@@ -18,6 +18,6 @@ CELERY_DEFAULT_EXCHANGE = 'arxiv_pipeline'
 CELERY_DEFAULT_EXCHANGE_TYPE = "topic"
 
 CELERY_INCLUDE = []
-CELERY_BROKER = 'pyamqp://guest:guest@localhost:5682/arxiv_pipeline'
-OUTPUT_CELERY_BROKER = 'pyamqp://guest:guest@localhost:5682/master_pipeline'
-OUTPUT_TASKNAME = 'adi.tasks.task_update_record'
+#CELERY_BROKER = 'pyamqp://guest:guest@localhost:5682/arxiv_pipeline'
+#OUTPUT_CELERY_BROKER = 'pyamqp://guest:guest@localhost:5682/master_pipeline'
+#OUTPUT_TASKNAME = 'adi.tasks.task_update_record'
