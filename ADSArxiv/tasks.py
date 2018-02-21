@@ -1,5 +1,5 @@
 from __future__ import absolute_import, unicode_literals
-import adi.app as app_module
+import ADSArxiv.app as app_module
 from adsputils import get_date, exceptions
 from kombu import Queue
 import os
