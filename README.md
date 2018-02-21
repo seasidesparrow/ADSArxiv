@@ -1,3 +1,5 @@
-# ADS_Direct_Ingest
+# ADSArxiv
 
-Developing a framework by which journal metadata can be read in (e.g. with adsabs-pyingest) and sent directly to Solr via NonBibPipeline.
+A worker that generates metadata records from ArXiv.org in .json format
+suitable for conversion to PROTOBUF, and forwards them to RabbitMQ (to
+the queue "arxiv_pipeline/output-results"
