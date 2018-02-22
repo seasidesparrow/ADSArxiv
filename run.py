@@ -6,7 +6,7 @@ import os
 import sys
 from glob import glob
 from pyingest.parsers.arxiv import ArxivParser
-from adi.serializer_mp import ArxivToMasterPipeline
+from ADSArxiv.arxivmsg import ArxivToMasterPipeline
 
 def get_arguments():
 
@@ -109,17 +109,11 @@ def main():
                 parsed_records.append(arxiv.parse(fp))
 
         for r in parsed_records:
-            r['title']=[r['title']]
-            r['author']=[r['authors']]
-            r['keyword']=[r['keywords']]
-            del r['authors']
-            del r['keywords']
-            del r['properties']
+            mpsender=ArxivToMasterPipeline()
             if args.parse_only:
-                print ("\n"+str(r)+"\n")
+                print ("\n"+str(mpsender.translate(r))+"\n")
             else:
-                mpsender=ArxivToMasterPipeline()
-                mpsender.serialize(r)
+                mpsender.serialize(mpsender.translate(r))
 
     else:
         print("Empty record list.")
