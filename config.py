@@ -24,12 +24,9 @@ PREFETCH_MULTIPLIER=1
 CELERYD_TASK_SOFT_TIME_LIMIT = 300
 CELERY_BROKER = 'pyamqp://'
 
-CELERY_DEFAULT_EXCHANGE = 'arxiv_pipeline'
+CELERY_DEFAULT_EXCHANGE = 'direct_ingest_pipeline'
 CELERY_DEFAULT_EXCHANGE_TYPE = "topic"
 
-
-# Should this be going to port:6672 ?
-#OUTPUT_CELERY_BROKER = 'pyamqp://guest:guest@localhost:6672/master_pipeline'
 OUTPUT_CELERY_BROKER = 'pyamqp://guest:guest@localhost:5682/master_pipeline'
 
 OUTPUT_TASKNAME = 'adsmp.tasks.task_update_record'

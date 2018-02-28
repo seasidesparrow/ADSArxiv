@@ -1,14 +1,11 @@
-from __future__ import absolute_import, unicode_literals
-import ADSArxiv.app as app_module
-from adsputils import get_date, exceptions
 from kombu import Queue
 import os
-from adsmsg import DenormalizedRecord
+import app as app_module
 
-# ============================= INITIALIZATION ==================================== #
+# ============================== INITIALIZATION ============================== #
 
 proj_home = os.path.realpath(os.path.join(os.path.dirname(__file__), '../'))
-app = app_module.AdsArxivCelery('arxiv_pipeline', proj_home=proj_home)
+app = app_module.AdsArxivCelery('direct_ingest_pipeline', proj_home=proj_home)
 logger = app.logger
 
 
@@ -17,7 +14,7 @@ app.conf.CELERY_QUEUES = (
 )
 
 
-# ============================= TASKS ============================================= #
+# =============================== TASKS ====================================== #
 
 
 @app.task(queue='output-results')
@@ -36,7 +33,3 @@ def task_output_results(msg):
     """
     logger.debug('Will forward this nonbib record: %s', msg)
     app.forward_message(msg)
-
-
-if __name__ == '__main__':
-    app.start()

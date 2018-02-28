@@ -1,8 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
 
-from kombu import Queue
-from adsmsg import BibRecord, DenormalizedRecord
+from adsmsg import DenormalizedRecord
 from ADSArxiv.tasks import task_output_results
 from ADSArxiv.app import AdsArxivCelery
 
@@ -29,6 +28,3 @@ class ArxivToMasterPipeline(dict):
             task_output_results.delay(rec)
         else:
             print ("Null record, not sending to master pipeline")
-
-app = AdsArxivCelery('arxiv_pipeline')
-logger = app.logger
